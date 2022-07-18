@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'widgets.dart';
 
 void main() {
   runApp(const MyApp());
@@ -51,32 +52,25 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-	toolbarHeight: 100,
-	leading: Image.asset('assets/The-Paper_Medal.png',),
-	leadingWidth: 100,
-	title: Padding(
-	  child: const Text('The Paper', style: TextStyle(fontSize: 50)),
-	  padding: EdgeInsets.only(bottom: 20)
-	),
+	toolbarHeight: 70,
+	title: 	titleBtn(context, MyApp(), 70),
+	titleSpacing: 0,
 	actions: <Widget>[
-	  Padding(
-	    child:
-	      TextButton(
-		child: Text("Login", style: TextStyle(fontSize: 50, color: Colors.white)),
-		onPressed: null
+	    Padding(
+	      padding: EdgeInsets.only(right: 0,),
+	      child: Align(
+		alignment: Alignment.centerRight,
+		child: FlatButton(
+		  child: Image.asset('assets/Login_btn.png', height: 50), onPressed: () {
+		    Navigator.of(context).push(MaterialPageRoute(builder: (context)=>LoginScreen()));
+		  },
+		), 
 	      ),
-	    padding: EdgeInsets.only(right: 20)
-	  ),
-
+	    ),
 	]
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-	    
-          ],
-        ),
+	child: postWdgt(context),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
@@ -89,26 +83,27 @@ class _MyHomePageState extends State<MyHomePage> {
 
 class LoginScreen extends StatefulWidget {
   @override
-	_LoginScreenState createState() => _LoginScreenState();
+  _LoginScreenState createState() => _LoginScreenState();
 }
 class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-	title: const Text('Navigate to a new screen on Button click'),    
-	backgroundColor: Colors.brown,
+	toolbarHeight: 70,
+	titleSpacing: 0,
+	title: titleBtn(context, MyApp(), 70),
+      ),
+      body: Center(
+	child: FlatButton(
+	  color: Colors.brown,
+	  textColor: Colors.white,
+	  onPressed: () {
+	      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>MyApp()));
+	  },
+	  child: Text('GO TO HOME'),
 	),
-	body: Center(
-	  child: FlatButton(
-	    color: Colors.brown,
-	    textColor: Colors.white,
-	    onPressed: () {
-		Navigator.of(context).push(MaterialPageRoute(builder: (context)=>MyApp()));
-	    },
-	    child: Text('GO TO HOME'),
-	  ),
-	),
+      ),
     );																								
   }
 }

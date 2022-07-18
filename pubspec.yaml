@@ -61,6 +61,10 @@ flutter:
   assets:
     - The-Paper_Shapes1.png
     - The-Paper_Medal.png
+    - Logo_title.png
+    - Logo_title2.png
+    - Logo_title3.png
+    - Login_btn.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
