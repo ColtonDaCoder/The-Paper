@@ -53,7 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
 	toolbarHeight: 70,
-	title: 	titleBtn(context, MyApp(), 70),
+	title: 	TitleButton(),
 	titleSpacing: 0,
 	actions: <Widget>[
 	    Padding(
@@ -70,13 +70,8 @@ class _MyHomePageState extends State<MyHomePage> {
 	]
       ),
       body: Center(
-	child: postWdgt(context),
+	child: PostWidget(),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), 
     );
   }
 }
@@ -92,18 +87,29 @@ class _LoginScreenState extends State<LoginScreen> {
       appBar: AppBar(
 	toolbarHeight: 70,
 	titleSpacing: 0,
-	title: titleBtn(context, MyApp(), 70),
+	title: const TitleButton(),
       ),
-      body: Center(
-	child: FlatButton(
-	  color: Colors.brown,
-	  textColor: Colors.white,
-	  onPressed: () {
-	      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>MyApp()));
-	  },
-	  child: Text('GO TO HOME'),
+      body: const LoginColumn(),
+    );																								
+  }
+}
+class TitleButton extends StatelessWidget{
+  const TitleButton({
+    Key? key,
+  }) : super(key: key);
+  @override
+  Widget build(BuildContext context){
+    return TextButton(
+      onPressed: () {
+	Navigator.of(context).push(MaterialPageRoute(builder: (context)=>MyApp()));
+      },  
+      child: Padding(	
+	padding: EdgeInsets.only(left: 5,),
+	child: Align( 
+	  alignment: Alignment.centerLeft,
+	  child: Image.asset('assets/Logo_title3.png',height: 70),
 	),
       ),
-    );																								
+    );
   }
 }
